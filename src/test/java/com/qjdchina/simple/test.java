@@ -1,5 +1,7 @@
 package com.qjdchina.simple;
 
+import java.util.Date;
+
 /**
  * @Des
  * @Author Li-Nic
@@ -10,5 +12,11 @@ public class test {
 
         ChildClass childClass = new ChildClass();
         childClass.dd();
+        dateTest();
+    }
+
+    public static void dateTest(){
+        Date date = new Date(0);
+        System.out.println(date);
     }
 }

@@ -35,6 +35,20 @@
 
     <servlet-mapping>
         <servlet-name>dispatcherServlet</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/mvc/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>myServlet</servlet-name>
+        <servlet-class>com.qjdchina.config.MyServlet</servlet-class>
+        <init-param>
+            <param-name>name</param-name>
+            <param-value>lhc</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>myServlet</servlet-name>
+        <url-pattern>/my/*</url-pattern>
     </servlet-mapping>
 </web-app>
