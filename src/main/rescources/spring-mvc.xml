@@ -8,4 +8,20 @@
     <context:component-scan base-package="com.qjdchina.controller">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
     </context:component-scan>
+
+    <mvc:annotation-driven validator="validator">
+        <mvc:message-converters>
+            <ref bean="jsonConverter" />
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <bean id="jsonConverter" class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+        <property name="charset" value="utf-8"/>
+        <property name="supportedMediaTypes">
+            <list>
+                <value>application/json</value>
+                <value>application/json;charset=utf-8</value>
+            </list>
+        </property>
+    </bean>
 </beans>

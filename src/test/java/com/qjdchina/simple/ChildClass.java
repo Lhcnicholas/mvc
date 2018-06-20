@@ -5,7 +5,7 @@ package com.qjdchina.simple;
  * @Author Li-Nic
  * @Date 2018/5/14
  **/
-public class ChildClass extends com.qjdchina.simple.AbstractClass {
+public class ChildClass extends AbstractClass {
 
     public void sout() {
         System.out.println("hhhhhh");
