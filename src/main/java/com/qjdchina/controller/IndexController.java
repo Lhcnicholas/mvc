@@ -1,7 +1,9 @@
 package com.qjdchina.controller;
 
 import com.qjdchina.model.ValidModel;
+import com.qjdchina.service.MyService;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -30,9 +32,13 @@ public class IndexController {
     @Value("#{app['list'].split(',')}")
     private List<String> stringList;
 
+    @Autowired
+    private MyService myService;
+
     @RequestMapping("/")
     @ResponseBody
     public String hello(){
+        myService.aspectService();
         return "Hello" + name;
     }
 
