@@ -1,13 +1,12 @@
 package com.qjdchina.controller;
 
+import com.qjdchina.model.ValidModel;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -21,14 +20,14 @@ import java.util.List;
  * @Author Li-Nic
  * @Date 2018/5/14
  **/
-@Controller
+@RestController
 @Validated
 public class IndexController {
 
     @Value("#{app['name']}")
     private String name;
 
-    @Value("#{app['list']}")
+    @Value("#{app['list'].split(',')}")
     private List<String> stringList;
 
     @RequestMapping("/")
@@ -73,6 +72,12 @@ public class IndexController {
     @ResponseBody
     public List<String> getStringList(){
         return stringList;
+    }
+
+    @RequestMapping
+    public String testTime(@RequestBody ValidModel validModel) {
+        System.out.println(validModel.getGmtPaid());
+        return validModel.getGmtPaid().toString();
     }
 
 }
