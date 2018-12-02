@@ -2,6 +2,7 @@ package com.qjdchina.aspects;
 
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -28,6 +29,11 @@ public class RequestInterceptor {
 
     @Before("adminRequired()")
     public void adminCommon(JoinPoint joinPoint) {
-        logger.debug("------HI,这里是前置切面");
+        logger.debug("------HI,这里是前置切面,{}方法开始执行",joinPoint.getSignature().toShortString());
+    }
+
+    @After("adminRequired()")
+    public void afterCommon(JoinPoint joinPoint) {
+        logger.debug("------这里是后置切面，{}方法执行结束", joinPoint.getSignature().toShortString());
     }
 }

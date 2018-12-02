@@ -2,6 +2,7 @@ package com.qjdchina.controller;
 
 import com.qjdchina.model.ValidModel;
 import com.qjdchina.service.MyService;
+import com.qjdchina.utils.annotations.RoleAdmin;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -39,7 +40,8 @@ public class IndexController {
     @ResponseBody
     public String hello(){
         myService.aspectService();
-        return "Hello" + name;
+        myService.noAspectService();
+        return "Hello," + name;
     }
 
     @RequestMapping(value = "cookie",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
@@ -51,10 +53,11 @@ public class IndexController {
         return null;
     }
 
+    @RoleAdmin
     @RequestMapping(value = "cookie",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
     public String setCookie(HttpServletRequest request,HttpServletResponse response) {
         Cookie cookie = new Cookie("name","lihongcheng");
-        cookie.setDomain("baidu.com");
+        //cookie.setDomain("/");
         response.addCookie(cookie);
         return cookie.getValue();
     }

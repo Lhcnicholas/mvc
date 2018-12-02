@@ -13,8 +13,10 @@ import java.io.IOException;
  **/
 public class MyServlet extends HttpServlet {
 
+    private static final long serialVersionUID = 924155757688816642L;
+
     @Override
-    public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+    public void service(ServletRequest req, ServletResponse res) throws IOException {
         String name = getInitParameter("name");
         System.out.println("Hello "+name+",This is my servlet");
 
