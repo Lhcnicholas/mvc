@@ -46,6 +46,10 @@ public class IndexController {
 
     @RequestMapping(value = "cookie",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public String getCookie(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        if (request.getParameter("cookie") != null) {
+            Cookie a = new Cookie("name",request.getParameter("cookie"));
+            response.addCookie(a);
+        }
         Cookie[] cookies = request.getCookies();
         for (Cookie cookie : cookies) {
             response.getWriter().println(cookie.getValue());
@@ -56,7 +60,7 @@ public class IndexController {
     @RoleAdmin
     @RequestMapping(value = "cookie",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
     public String setCookie(HttpServletRequest request,HttpServletResponse response) {
-        Cookie cookie = new Cookie("name","lihongcheng");
+        Cookie cookie = new Cookie("name",request.getParameter("cookie"));
         //cookie.setDomain("/");
         response.addCookie(cookie);
         return cookie.getValue();
