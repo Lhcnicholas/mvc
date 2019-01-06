@@ -40,6 +40,6 @@ Configuration:
       AppenderRef:
         ref: File
     Root:
-      level: error
+      level: debug
       AppenderRef:
         ref: STDOUT
