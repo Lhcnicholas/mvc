@@ -36,7 +36,7 @@ public class IndexController {
     @Autowired
     private MyService myService;
 
-    @RequestMapping("/")
+    @RequestMapping
     @ResponseBody
     public String hello(){
         myService.aspectService();
@@ -87,7 +87,7 @@ public class IndexController {
         return stringList;
     }
 
-    @RequestMapping
+    @RequestMapping("/")
     public String testTime(@RequestBody ValidModel validModel) {
         System.out.println(validModel.getGmtPaid());
         return validModel.getGmtPaid().toString();

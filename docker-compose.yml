@@ -1,0 +1,12 @@
+weba:
+  build: .
+  expose:
+    - 8080
+webb:
+  build: .
+  expose:
+    - 8080
+webc:
+  build: .
+  expose:
+    - 8080
