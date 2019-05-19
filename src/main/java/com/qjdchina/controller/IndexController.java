@@ -44,6 +44,12 @@ public class IndexController {
         return "Hello," + name;
     }
 
+    @RequestMapping(value = "string",produces = "text/html")
+    @ResponseBody
+    public String string() {
+        return "Hello,World";
+    }
+
     @RequestMapping(value = "cookie",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public String getCookie(HttpServletRequest request, HttpServletResponse response) throws IOException {
         if (request.getParameter("cookie") != null) {
@@ -77,6 +83,7 @@ public class IndexController {
 
     @RequestMapping(value = "valid")
     @ResponseBody
+    @Validated
     public String testValid(@NotBlank String validString) {
         return validString;
     }
