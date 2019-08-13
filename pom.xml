@@ -128,6 +128,12 @@
       <artifactId>commons-dbcp</artifactId>
       <version>1.4</version>
     </dependency>
+
+    <dependency>
+      <groupId>com.qjdchina</groupId>
+      <artifactId>clms-service</artifactId>
+      <version>1.4.77-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 
   <build>

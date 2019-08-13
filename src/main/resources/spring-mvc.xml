@@ -9,7 +9,7 @@
     <context:component-scan base-package="com.qjdchina.controller">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
     </context:component-scan>
-    <context:component-scan base-package="com.qjdchina.aspects"/>
+    <context:component-scan base-package="com.qjdchina.aspects,com.qjdchina.interceptors"/>
 
     <mvc:annotation-driven validator="validator">
         <mvc:message-converters>
@@ -27,4 +27,13 @@
     </bean>
 
     <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.qjdchina.interceptors.LogInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+
 </beans>
