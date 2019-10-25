@@ -11,7 +11,7 @@ public class MyPostProcessor implements BeanPostProcessor {
 
 	@Override
 	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-		logger.info("Initializing Bean:{}", beanName);
+		logger.info("PostProcessor执行,Initializing Bean:{}", beanName);
 		return bean;
 	}
 

@@ -27,7 +27,7 @@ import java.util.List;
 @Validated
 public class IndexController {
 
-    @Value("#{app['name']}")
+    @Value("${name}")
     private String name;
 
     @Value("#{app['list'].split(',')}")
@@ -39,6 +39,7 @@ public class IndexController {
     @RequestMapping
     @ResponseBody
     public String hello(){
+        myService.hello();
         myService.aspectService();
         myService.noAspectService();
         return "Hello," + name;
@@ -47,6 +48,7 @@ public class IndexController {
     @RequestMapping(value = "string",produces = "text/html")
     @ResponseBody
     public String string() {
+        myService.hello();
         return "Hello,World";
     }
 
@@ -83,7 +85,7 @@ public class IndexController {
 
     @RequestMapping(value = "valid")
     @ResponseBody
-    @Validated
+//    @Validated
     public String testValid(@NotBlank String validString) {
         return validString;
     }

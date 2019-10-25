@@ -1,5 +1,8 @@
 package com.qjdchina.simple;
 
+import org.springframework.expression.Expression;
+import org.springframework.expression.spel.standard.SpelExpressionParser;
+
 import java.util.Date;
 
 /**
@@ -8,22 +11,10 @@ import java.util.Date;
  * @Date 2018/5/14
  **/
 public class test {
-    public static void main(String[] args) {
-
-        ChildClass childClass = new ChildClass();
-        childClass.dd();
-        dateTest();
-        System.out.println(StaticBlock.getHello());
-        weiTest(10,1);
-    }
-
-    public static void dateTest(){
-        Date date = new Date(0);
-        System.out.println(date);
-    }
-
-    public static void weiTest(int num,int i){
-        int j = num & (1 << i);
-        System.out.println(i);
-    }
+	public static void main(String[] args) {
+		SpelExpressionParser parser = new SpelExpressionParser();
+		Expression expression = parser.parseExpression("'''abc'");
+		String value = expression.getValue(String.class);
+		System.out.println(value);
+	}
 }

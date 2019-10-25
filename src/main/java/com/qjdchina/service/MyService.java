@@ -7,6 +7,8 @@ package com.qjdchina.service;
  **/
 public interface MyService {
 
+    void hello();
+
     void aspectService();
 
     void noAspectService();
